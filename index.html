@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flower Shop</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+
+        .header {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+        }
+
+        .nav {
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        .nav a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .container {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .footer {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        .product {
+            border: 1px solid #ddd;
+            margin: 20px;
+            padding: 10px;
+            text-align: center;
+            background-color: #fff;
+            display: inline-block;
+            width: 30%;
+        }
+
+        .product img {
+            max-width: 100%;
+        }
+
+        .cart {
+            text-align: right;
+            margin-top: 10px;
+            margin-right: 20px;
+        }
+
+        .cart a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .product-title, .product-price {
+            margin: 10px 0;
+        }
+
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgb(0,0,0); 
+            background-color: rgba(0,0,0,0.4); 
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        form input, form textarea {
+            margin: 10px 0;
+            padding: 10px;
+            width: 80%;
+        }
+        
+        form button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        
+        form button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Bloom Flower Shop</h1>
+    </div>
+
+    <div class="nav">
+        <a href="#home">Home</a>
+        <a href="#about">About Us</a>
+        <a href="#shop">Shop</a>
+        <a href="#contact">Contact Us</a>
+        <a href="#register">Registration</a>
+    </div>
+
+    <div id="home" class="container">
+        <h2>Welcome to the Bloom Flower Shop</h2>
+        <p>Explore our collection of beautiful flowers.</p>
+    </div>
+
+    <div id="about" class="container">
+        <h2>About Us</h2>
+        <p>At Bloom Flower Shop, we believe in the power of flowers to brighten days, celebrate special moments, and bring people together.</p>
+    </div>
+
+    <div id="shop" class="container">
+        <h2>Shop</h2>
+        
+        <div class="product" data-id="1" data-name="Rose Bouquet" data-price="2,499.00">
+            <img src="photo1.png" alt="Rose Bouquet">
+            <h2 class="product-title">Rose Bouquet</h2>
+            <p class="product-price">₱2,499.00</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <div class="product" data-id="2" data-name="Mirabel" data-price="3,299.00">
+            <img src="photo2.png" alt="Rose Bouquet">
+            <h2 class="product-title">Rose Bouquet</h2>
+            <p class="product-price">₱3,299.00</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <div class="product" data-id="3" data-name="Tulips Bouquet" data-price="3,000.00">
+            <img src="photo3.png" alt="Tulips Bouquet">
+            <h2 class="product-title">Tulips Bouquet</h2>
+            <p class="product-price">₱3,000.00</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+         <div class="product" data-id="3" data-name="Spring Scene" data-price="3,000.00">
+            <img src="photo4.png" alt="Spring Scene">
+            <h2 class="product-title">Spring Scene</h2>
+            <p class="product-price">₱5,199.00</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <div class="product" data-id="3" data-name="Meadow Melody" data-price="3,000.00">
+            <img src="photo5.png" alt="Meadow Melody">
+            <h2 class="product-title">Meadow Melody</h2>
+            <p class="product-price">₱1,200.00</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <div class="product" data-id="3" data-name="Lavander Love" data-price="3,000.00">
+            <img src="photo6.png" alt="Lavander Love">
+            <h2 class="product-title">Lavander Love</h2>
+            <p class="product-price">₱1,200.00</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <div class="product" data-id="3" data-name="Sweet Spot" data-price="3,000.00">
+            <img src="photo7.png" alt="Sweet Spot">
+            <h2 class="product-title">Sweet Spot</h2>
+            <p class="product-price">₱1,399.00</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <div class="product" data-id="3" data-name="Taffy" data-price="3,000.00">
+            <img src="photo8.png" alt="Taffy">
+            <h2 class="product-title">Taffy</h2>
+            <p class="product-price">₱799.00</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <div class="product" data-id="3" data-name="Lovely Posy" data-price="3,000.00">
+            <img src="photo1.png" alt="Lovely Posy">
+            <h2 class="product-title">Lovely Posy</h2>
+            <p class="product-price">₱1,199.00</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+
+
+    </div>
+
+    <div id="contact" class="container">
+        <h2>Contact Us</h2>
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+
+    <div id="register" class="container">
+        <h2>Registration</h2>
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <input type="password" placeholder="Your Password" required>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Your Cart</h2>
+            <ul id="cart-items"></ul>
+            <p>Total: $<span id="cart-total">0.00</span></p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Flower Shop</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cart = [];
+            const cartLink = document.getElementById('cart-link');
+            const cartModal = document.getElementById('cart-modal');
+            const closeModal = document.getElementsByClassName('close')[0];
+            const cartItemsList = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+            
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const product = event.target.closest('.product');
+                    const productId = product.getAttribute('data-id');
+                    const productName = product.getAttribute('data-name');
+                    const productPrice = parseFloat(product.getAttribute('data-price'));
+                    
+                    addToCart(productId, productName, productPrice);
+                });
+            });
+
+            cartLink.addEventListener('click', (event) => {
+                event.preventDefault();
+                showCart();
+            });
+
+            closeModal.addEventListener('click', () => {
+                cartModal.style.display = 'none';
+            });
+
+            window.addEventListener('click', (event) => {
+                if (event.target == cartModal) {
+                    cartModal.style.display = 'none';
+                }
+            });
+
+            function addToCart(id, name, price) {
+                const existingProduct = cart.find(item => item.id === id);
+
+                if (existingProduct) {
+                    existingProduct.quantity += 1;
+                } else {
+                    cart.push({ id, name, price, quantity: 1 });
+                }
+
+                updateCartCount();
+                updateCartTotal();
+            }
+
+            function updateCartCount() {
+                cartLink.textContent = `Cart (${cart.reduce((sum, item) => sum + item.quantity, 0)})`;
+            }
+
+            function updateCartTotal() {
+                cartTotal.textContent = cart.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2);
+            }
+
+            function showCart() {
+                cartItemsList.innerHTML = '';
+
+                if (cart.length === 0) {
+                    cartItemsList.innerHTML = '<li>Your cart is empty.</li>';
+                } else {
+                    cart.forEach(item => {
+                        const li = document.createElement('li');
+                        li.textContent = `${item.name} (x${item.quantity}) - $${(item.price * item.quantity).toFixed(2)}`;
+                        cartItemsList.appendChild(li);
+                    });
+                }
+
+                cartModal.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
